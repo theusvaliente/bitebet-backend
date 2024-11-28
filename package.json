@@ -1,0 +1,30 @@
+{
+  "name": "bitebet-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx ts-node server/index.ts --experimental-modules",
+    "build": "tsc -p tsconfig.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.36.1",
+    "express": "^4.21.1",
+    "libsql": "^0.4.7",
+    "mssql": "^11.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.9.0",
+    "drizzle-kit": "^0.28.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

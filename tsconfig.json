@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "module": "ES2020",
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution":"node"
+    },
+    "ts-node": {
+        "esm": true
+    }
+}
