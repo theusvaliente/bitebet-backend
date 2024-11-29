@@ -1,12 +1,11 @@
 {
   "name": "bitebet-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server/index.ts",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx ts-node server/index.ts --experimental-modules",
-    "build": "tsc -p tsconfig.json"
+    "dev": "npx tsx server/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +23,7 @@
     "@types/node": "^22.9.0",
     "drizzle-kit": "^0.28.0",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   }

@@ -1,9 +1,8 @@
 import express from 'express';
 import betRouter from '../api/betRouter';
-import foodRouter from '../api/food.api';
-import teamRouter from '../api/team.api';
-import userRouter from '../api/user.api';
-
+import foodRouter from '../api/foodRouter';
+import teamRouter from '../api/teamRouter';
+import userRouter from '../api/userRouter';
 
 const app: express.Express = express();
 
