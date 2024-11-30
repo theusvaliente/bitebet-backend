@@ -4,16 +4,16 @@ import 'dotenv/config';
 
 export * as tables from './schema';
 
-let database:LibSQLDatabase | null  = null;
+let database: LibSQLDatabase;
 
 export const useDatabase = () => {
-  const { tursoDBURL, tursoDBToken } = process.env;
+  const { TURSO_DATABASE_URL, TURSO_AUTH_TOKEN } = process.env;
 
-  if (tursoDBToken && tursoDBURL) {
+  if (TURSO_DATABASE_URL && TURSO_AUTH_TOKEN) {
     database = drizzle(
       createClient({
-        url: tursoDBURL,
-        authToken: tursoDBToken,
+        url: TURSO_DATABASE_URL,
+        authToken: TURSO_AUTH_TOKEN,
       }),
     );
   }

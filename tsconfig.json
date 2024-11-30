@@ -1,20 +1,20 @@
 {
-    "compilerOptions": {
-      "target": "es2016",
-      "module": "commonjs",
-      "baseUrl": "./src",
-      "paths": {
-        "@app/*": ["*"]
-      },
-      "outDir": "./dist",
-      "esModuleInterop": true,
-      "forceConsistentCasingInFileNames": true,
-      "strict": true,
-      "skipLibCheck": true
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "baseUrl": "./src",
+    "paths": {
+      "@app/*": ["*"]
     },
-    "include": ["src/**/*.ts"],
-    "exclude": ["node_modules"],
-    "ts-node": {
-      "require": ["tsconfig-paths/register"]
-    }
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
   }
+}
