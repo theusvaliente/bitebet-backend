@@ -1,10 +1,15 @@
-import * as db from '../entity/bet.db'
 import { Request, Response, Router } from 'express';
+import * as db from '../business/apostas';
 
-const router = Router()
+const router = Router();
 
 router.get('/bets', async (req: Request, res: Response) => {
-    return res.send(await db.exibirBets())
-})
+    const idUsuario = String(req.headers["usuario"]);
+    return res.send(db.listarApostas(idUsuario));
+});
 
-export default router
+router.post('/createBet', async (req: Request, res: Response) => {
+    return res.send(db.criarAposta(req.body));
+});
+
+export default router;
