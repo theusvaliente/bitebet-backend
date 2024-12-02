@@ -4,55 +4,21 @@ import { Request, Response, Router } from 'express';
 const router = Router()
 
 router.get('/users', async (req: Request, res: Response) => {
-    return await db.exibirUsuarios()
-})
+    return res.send(await db.exibirUsuarios());
+});
 
-// router.post('/user', async (req: Request, res: Response) => {
-//     const {
-//         nomeCompleto, cpf , dataNascimeto, time, cep, logradouro, numero, complemento, celular, email
-//     } = req.body
+router.post('/register', async (req: Request, res: Response) => {
+    console.log(req.body)
 
-//     await database.create({
-//         nomeCompleto,
-//         cpf,
-//         dataNascimeto,
-//         time,
-//         cep,
-//         logradouro,
-//         numero,
-//         complemento,
-//         celular,
-//         email,
-//     })
+    const user = await db.usuario(req.body.email);
 
-//     return res.status(201).send()
-// })
+    if (user) {
+        return res.send("Usuário já existe").status(400);
+    }
 
-// router.put('/user/:id', async (req, res) => {
-//    const id = req.params.id
-//    const { nomeCompleto, cpf , dataNascimeto, time, cep, logradouro, numero, complemento,
-//     celular,email, } = req.body
+    db.criarUsuario(req.body);
 
-//    await database.update(id, {
-//     nomeCompleto,
-//     cpf,
-//     dataNascimeto,
-//     time,
-//     cep,
-//     logradouro,
-//     numero,
-//     complemento,
-//     celular,
-//     email,
-//    })
+    return res.send().status(200);
+});
 
-//    return res.status(204).send()
-// })
-
-// router.delete('/user/:id', async (req, res) => {
-//     const id = req.params.id
-//     await database.delete(id)
-//     return res.status(200).send()
-// })
-
-export default router
+export default router;

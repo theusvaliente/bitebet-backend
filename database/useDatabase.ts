@@ -6,7 +6,7 @@ export * as tables from './schema';
 
 let database: LibSQLDatabase;
 
-export const useDatabase = () => {
+const useDatabase = () => {
   const { TURSO_DATABASE_URL, TURSO_AUTH_TOKEN } = process.env;
 
   if (TURSO_DATABASE_URL && TURSO_AUTH_TOKEN) {
@@ -20,3 +20,5 @@ export const useDatabase = () => {
 
   return database;
 };
+
+export const db = useDatabase();

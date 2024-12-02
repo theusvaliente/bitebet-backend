@@ -6,6 +6,7 @@ import userRouter from '../api/user.api';
 
 const app: express.Express = express();
 
+app.use(express.json());
 app.use(betRouter);
 app.use(foodRouter);
 app.use(teamRouter);
