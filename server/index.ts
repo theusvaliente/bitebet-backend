@@ -14,4 +14,4 @@ app.use(userRouter);
 
 app.listen({
     port: 3333
-})
+});
