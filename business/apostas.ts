@@ -1,18 +1,11 @@
-import { exibirBetsPorUsuario } from "../entity/bet.db";
+import * as db from "../entity/bet.db";
 
-interface Dados {
-    usuario1: string;
-    usuario2: string;
-    partida: string;
-    comida: string;
+const listarApostas = async (idUsuario: string) => {
+    return await db.exibirApostasPorUsuario(idUsuario);
 };
 
-const listarApostas = (idUsuario: string) => {
-    return exibirBetsPorUsuario(idUsuario);
-};
-
-const criarAposta = (dados: Dados) => {
-
+const criarAposta = async (dados: db.Dados) => {
+    return await db.criarAposta(dados);
 };
 
 export {

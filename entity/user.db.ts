@@ -17,12 +17,10 @@ interface Usuario {
 }
 
 const criarUsuario = async(dados: Usuario) => {
-    const idUsuario = randomUUID().toString();
-
     await db
         .insert(user)
         .values({
-            idUser: idUsuario,
+            idUser: randomUUID().toString,
             nomeCompleto: dados.nomeCompleto,
             cpf: dados.cpf,
             dataNascimeto: new Date().getTime(),
@@ -32,7 +30,8 @@ const criarUsuario = async(dados: Usuario) => {
             numero: dados.numero,
             complemento: dados.complemento,
             celular: dados.celular,
-            email: dados.email
+            email: dados.email,
+            createdAt: new Date()
         });
 }
 
