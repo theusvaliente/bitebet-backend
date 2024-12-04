@@ -1,6 +1,7 @@
 import * as dbTimes from '../entity/team.db'
 
 export interface Partida {
+    idPartida: string,
     dataPartida: string,
     timeCasa: string,
     timeFora: string,
@@ -28,6 +29,7 @@ const listarPartidas = async () => {
         const data = new Date(partida.sport_event.start_time);
     
         if (data >= new Date()) {
+            const idPartida = partida.sport_event.id;
             const dataPartida = new Date(partida.sport_event.start_time).toLocaleDateString();
             const timeCasa = partida.sport_event.competitors[0].name;
             const timeFora = partida.sport_event.competitors[1].name;
@@ -39,6 +41,7 @@ const listarPartidas = async () => {
             const imagemTimeFora = times.filter(time => time.idTime === idTimeFora)[0].imagemTime;
 
             partidas.push({
+                idPartida,
                 dataPartida,
                 timeCasa,
                 timeFora,
