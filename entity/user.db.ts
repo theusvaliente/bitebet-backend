@@ -1,6 +1,6 @@
 import { db } from '../database/useDatabase';
 import { user } from '../database/schema';
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import { randomUUID } from 'crypto';
 
 interface Usuario {
@@ -52,8 +52,21 @@ const usuario = async(email: string) => {
     return users[0];
 }
 
+const usuarioLogin = async(email: string, cpf: string) => {
+    const users = await db
+        .select()
+        .from(user)
+        .where(and(
+            eq(user.email, email),
+            eq(user.cpf, cpf)
+        ));
+
+    return users[0];
+}
+
 export {
     criarUsuario,
     exibirUsuarios,
-    usuario
+    usuario,
+    usuarioLogin
 }

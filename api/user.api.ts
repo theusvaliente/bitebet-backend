@@ -19,4 +19,14 @@ router.post('/register', async (req: Request, res: Response) => {
     return res.send().status(200);
 });
 
+router.get('/login', async (req: Request, res: Response) => {
+    const user = await db.usuarioLogin(req.params.email, req.params.cpf);
+
+    if (user) {
+        return res.send().status(200);
+    }
+
+    return res.send("Usuário não encontrado").status(404);
+});
+
 export default router;
