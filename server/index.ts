@@ -11,6 +11,8 @@ const app: express.Express = express();
 
 app.use(cors({origin: '*'}));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use(betRouter);
 app.use(foodRouter);
 app.use(matchRouter);

@@ -8,6 +8,9 @@ router.get('/users', async (req: Request, res: Response) => {
 });
 
 router.post('/register', async (req: Request, res: Response) => {
+
+    console.log(req.body)
+
     const user = await db.usuario(req.body.email);
 
     if (user) {

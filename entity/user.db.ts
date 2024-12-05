@@ -20,10 +20,10 @@ const criarUsuario = async(dados: Usuario) => {
     await db
         .insert(user)
         .values({
-            idUser: randomUUID().toString,
+            idUser: randomUUID().toString(),
             nomeCompleto: dados.nomeCompleto,
             cpf: dados.cpf,
-            dataNascimeto: new Date().getTime(),
+            dataNascimeto: new Date(Number(dados.dataNascimeto)),
             time: dados.time,
             cep: dados.cep,
             logradouro: dados.logradouro,
