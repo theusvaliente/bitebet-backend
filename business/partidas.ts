@@ -5,6 +5,8 @@ export interface Partida {
     dataPartida: string,
     timeCasa: string,
     timeFora: string,
+    idTimeCasa: string,
+    idTimeFora: string,
     imagemTimeCasa: string,
     imagemTimeFora: string
 }
@@ -45,6 +47,8 @@ const listarPartidas = async () => {
                 dataPartida,
                 timeCasa,
                 timeFora,
+                idTimeCasa,
+                idTimeFora,
                 imagemTimeCasa,
                 imagemTimeFora
             })

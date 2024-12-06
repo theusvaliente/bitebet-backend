@@ -4,16 +4,16 @@ import { and, eq } from 'drizzle-orm';
 import { randomUUID } from 'crypto';
 
 interface Usuario {
-    nomeCompleto?: string;
-    cpf?: string;
-    dataNascimeto?: number;
-    time?: string;
-    cep?: string;
-    logradouro?: string;
-    numero?: string;
-    complemento?: string;
-    celular?: string;
-    email?: string;
+    nomeCompleto: string;
+    cpf: string;
+    dataNascimento: number;
+    time: string;
+    cep: string;
+    logradouro: string;
+    numero: string;
+    complemento: string;
+    celular: string;
+    email: string;
 }
 
 const criarUsuario = async(dados: Usuario) => {
@@ -23,7 +23,7 @@ const criarUsuario = async(dados: Usuario) => {
             idUser: randomUUID().toString(),
             nomeCompleto: dados.nomeCompleto,
             cpf: dados.cpf,
-            dataNascimeto: new Date(Number(dados.dataNascimeto)),
+            dataNascimeto: dados.dataNascimento,
             time: dados.time,
             cep: dados.cep,
             logradouro: dados.logradouro,
