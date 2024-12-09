@@ -64,9 +64,17 @@ const usuarioLogin = async(email: string, cpf: string) => {
     return users[0];
 }
 
+const deleteUsers = async () => {
+    const users = await db
+        .delete(user);
+
+    return users;
+}
+
 export {
     criarUsuario,
     exibirUsuarios,
     usuario,
-    usuarioLogin
+    usuarioLogin,
+    deleteUsers
 }

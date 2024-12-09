@@ -17,12 +17,16 @@ router.post('/register', async (req: Request, res: Response) => {
 
     await db.criarUsuario(req.body);
 
-    return res.send().status(200);
+    const logado = await db.usuarioLogin(req.body.email, req.body.cpf);
+    const time = await teamDb.exibirTimePorId(logado.time);
+
+    return res.send({
+        ...logado,
+        ...time
+    }).status(200);
 });
 
 router.post('/login', async (req: Request, res: Response) => {
-    console.log(req.body)
-
     const user = await db.usuarioLogin(req.body.email, req.body.cpf);
 
     if (user) {
@@ -35,6 +39,10 @@ router.post('/login', async (req: Request, res: Response) => {
     }
 
     return res.status(400).end();
+});
+
+router.post('/deleteUsers',async (req: Request, res: Response) => {
+    return res.send(await db.deleteUsers());
 });
 
 export default router;

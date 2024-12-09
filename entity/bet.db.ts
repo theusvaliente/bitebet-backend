@@ -1,4 +1,4 @@
-import { eq } from 'drizzle-orm';
+import { desc, eq, or } from 'drizzle-orm';
 import { bet } from '../database/schema';
 import { db } from '../database/useDatabase';
 import { randomUUID } from 'crypto';
@@ -14,7 +14,19 @@ const exibirApostasPorUsuario = async (idUsuario: string) => {
     const bets = await db
         .select()
         .from(bet)
-        .where(eq(bet.usuario1, idUsuario));
+        .where(or(
+            eq(bet.usuario1, idUsuario),
+            eq(bet.usuario2, idUsuario)
+        ))
+        .orderBy(desc(bet.createdAt))
+
+    return bets;
+}
+
+const exibirTodasApostas = async () => {
+    const bets = await db
+        .select()
+        .from(bet);
 
     return bets;
 }
@@ -34,4 +46,9 @@ const criarAposta = async (dados: Dados) => {
     return novaBet;
 }
 
-export { exibirApostasPorUsuario, criarAposta };
+const deleteBets = async () => {
+    await db
+        .delete(bet);
+}
+
+export { exibirApostasPorUsuario, criarAposta, exibirTodasApostas, deleteBets };

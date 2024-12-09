@@ -14,7 +14,7 @@ const exibirTimePorId = async (idTime: string) => {
     const teams = await db
         .select()
         .from(team)
-        .where(eq(team.idTime, idTime))
+        .where(eq(team.idTime, idTime));
 
     return teams[0];
 }
